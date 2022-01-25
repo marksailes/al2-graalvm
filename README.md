@@ -4,12 +4,14 @@ Amazon Linux 2 and GraalVM to build native binaries for AWS Lambda
 
 ## from amazonlinux:2
 
-Supported tags: al2-21.3.0, al2-21.2.0
+Java 17 & Java 11
+
+Supported tags: 17-21.3.0, 11-21.3.0, al2-21.3.0, al2-21.2.0
 - Amazon Linux 2
-- [GraalVM 21.2.0](https://github.com/graalvm/graalvm-ce-builds/releases/tag/vm-21.3.0)
+- [GraalVM 21.3.0](https://github.com/graalvm/graalvm-ce-builds/releases/tag/vm-21.3.0)
 - Maven 3.6.3
 
-## from corretto:11
+## [Deprecated] from corretto:11 
 
 Supported tags: latest, 11-21.3.0, 11-21.2.0, 11-21.1.0
 - Amazon Linux 2
