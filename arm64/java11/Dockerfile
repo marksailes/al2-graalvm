@@ -6,7 +6,7 @@ RUN yum -y update \
     zlib-devel glibc-static libcxx libcxx-devel llvm-toolset-7 zlib-static \
     && rm -rf /var/cache/yum
 
-ENV GRAAL_VERSION 21.3.0
+ENV GRAAL_VERSION 22.0.0.2
 ENV GRAAL_FOLDERNAME graalvm-ce-java11-${GRAAL_VERSION}
 ENV GRAAL_FILENAME graalvm-ce-java11-linux-aarch64-${GRAAL_VERSION}.tar.gz
 RUN curl -4 -L https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${GRAAL_VERSION}/${GRAAL_FILENAME} | tar -xvz
