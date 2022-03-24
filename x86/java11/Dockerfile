@@ -1,7 +1,7 @@
 FROM amazonlinux:2
 
 RUN yum -y update \
-    && yum install -y tar gzip bzip2-devel ed gcc gcc-c++ gcc-gfortran \
+    && yum install -y tar unzip gzip bzip2-devel ed gcc gcc-c++ gcc-gfortran \
     less libcurl-devel openssl openssl-devel readline-devel xz-devel \
     zlib-devel glibc-static libcxx libcxx-devel llvm-toolset-7 zlib-static \
     && rm -rf /var/cache/yum
@@ -21,12 +21,22 @@ RUN curl -4 -L https://mirrors.ukfast.co.uk/sites/ftp.apache.org/maven/maven-3/$
 RUN mv $MVN_FOLDERNAME /usr/lib/maven
 RUN rm -rf $MVN_FOLDERNAME
 
+# Gradle
+ENV GRADLE_VERSION 7.4.1
+ENV GRADLE_FOLDERNAME gradle-${GRADLE_VERSION}
+ENV GRADLE_FILENAME gradle-${GRADLE_VERSION}-bin.zip
+RUN curl -LO https://downloads.gradle-dn.com/distributions/gradle-${GRADLE_VERSION}-bin.zip
+RUN unzip gradle-${GRADLE_VERSION}-bin.zip
+RUN mv $GRADLE_FOLDERNAME /usr/lib/gradle
+RUN rm -rf $GRADLE_FOLDERNAME
+
 VOLUME /project
 WORKDIR /project
 
 RUN /usr/lib/graalvm/bin/gu install native-image
 RUN ln -s /usr/lib/graalvm/bin/native-image /usr/bin/native-image
 RUN ln -s /usr/lib/maven/bin/mvn /usr/bin/mvn
+RUN ln -s /usr/lib/gradle/bin/gradle /usr/bin/gradle
 
 ENV JAVA_HOME /usr/lib/graalvm
 
