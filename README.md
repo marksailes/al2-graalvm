@@ -1,3 +1,7 @@
+# No Longer Maintained
+
+
+
 # Amazon Linux 2 / GraalVM build image
 
 Amazon Linux 2 and GraalVM to build native binaries for AWS Lambda
